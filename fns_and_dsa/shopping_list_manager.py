@@ -10,7 +10,7 @@ def main():
 
     while True:
         display_menu()
-        choice = input("Enter your choice: ").strip()
+        choice = input("Enter your choice (1-4:): ").strip()
 
         if choice == '1':
             item = input("Enter the item to add: ").strip()
@@ -28,8 +28,8 @@ def main():
         elif choice == '3':
             if shopping_list:
                 print("Current Shopping List:")
-                for i, item in enumerate(shopping_list, start=1):
-                    print(f"{i}. {item}")
+                for index, item in enumerate(shopping_list, start=1):
+                    print(f"{index}. {item}")
             else:
                 print("Shopping list is empty.")
         
