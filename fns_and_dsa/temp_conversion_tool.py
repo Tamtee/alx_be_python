@@ -2,36 +2,33 @@
 FAHRENHEIT_TO_CELSIUS_FACTOR = 5 / 9
 CELSIUS_TO_FAHRENHEIT_FACTOR = 9 / 5
 
-# Conversion function: Fahrenheit to Celsius
+# Convert Fahrenheit to Celsius
 def convert_to_celsius(fahrenheit):
-    global FAHRENHEIT_TO_CELSIUS_FACTOR  # ALX expects explicit global
-    celsius = (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
-    return celsius
+    global FAHRENHEIT_TO_CELSIUS_FACTOR
+    return (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
 
-# Conversion function: Celsius to Fahrenheit
+# Convert Celsius to Fahrenheit
 def convert_to_fahrenheit(celsius):
-    global CELSIUS_TO_FAHRENHEIT_FACTOR  # ALX expects explicit global
-    fahrenheit = (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
-    return fahrenheit
+    global CELSIUS_TO_FAHRENHEIT_FACTOR
+    return (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
 
-# Main function: handles user interaction
+# Main program
 def main():
     try:
-        temp_input = input("Enter the temperature to convert: ")
-        temp = float(temp_input)  # Validate numeric input
-        unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
-
-        if unit == "F":
-            result = convert_to_celsius(temp)
-            print(f"{temp}°F is {result}°C")
-        elif unit == "C":
-            result = convert_to_fahrenheit(temp)
-            print(f"{temp}°C is {result}°F")
-        else:
-            print("Invalid temperature unit! Please enter 'C' or 'F'.")
+        temp = float(input("Enter the temperature to convert: "))
     except ValueError:
-        print("Invalid temperature. Please enter a numeric value.")
+        raise ValueError("Invalid temperature. Please enter a numeric value.")
 
-# Run main when script is executed
+    unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
+
+    if unit == "C":
+        converted = convert_to_fahrenheit(temp)
+        print(f"{temp}°C is {converted}°F")
+    elif unit == "F":
+        converted = convert_to_celsius(temp)
+        print(f"{temp}°F is {converted}°C")
+    else:
+        print("Invalid unit. Enter C or F.")
+
 if __name__ == "__main__":
     main()
